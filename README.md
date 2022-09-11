@@ -55,7 +55,7 @@ module "fsx_lustre_no_monitoring" {
 
 | Name                                     | Description                                                                                                                                                       | Type           | Default         | Required |
 |------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|-----------------|:--------:|
-| name                                     | Common name for all resources.                                                                                                                                    | `string`       | `""`   |   yes    |
+| name                                     | Common name for all resources.                                                                                                                                    | `string`       | `""`            |   yes    |
 | region                                   | The region to deploy the resources.                                                                                                                               | `string`       | `""`            |   yes    |
 | subnet_id                                | The subnet to create the filesystem in.  Note; FSx Lustre only supports one 'availability zone/subnet'.                                                           | `string`       | `""`            |   yes    |
 | security_group_ids                       | A list of security group Ids to apply to the filesystem.                                                                                                          | `list(string)` | `""`            |   yes    |
@@ -69,17 +69,19 @@ module "fsx_lustre_no_monitoring" {
 | enable_low_storage_capacity_monitoring   | Whether to enable the dashboard and 'Low free storage capacity alarm'?                                                                                            | `bool`         | `false`         |    no    |
 | low_free_data_storage_capacity_threshold | Low free data storage capacity threshold (Bytes).                                                                                                                 | `string`       | `7100000000000` |    no    |
 | alarm_notification_email_address         | The email address to send FSX storage alarms/alerts to.                                                                                                           | `string`       | `""`            |   yes    |
+| enable_backups                           | Whether to enable backups for this filesystem?                                                                                                                    | `bool`         | `false`         |    no    |
 
 
 ## Outputs
 
-| Name                         | Description                                              |
-|------------------------------|----------------------------------------------------------|
-| file_system_id               | The id of the FSx filesystem.                            |
-| file_system_security_group_ids     | The security group ids for the filesystem security group. |
-| file_system_subnet_id              | The id of the subnet associated with the FSx filesystem. |
-| file_system_vpc_id               | The vpc id of the FSx filesystem.                        |
-| file_system_dns_name               | The dns name of the FSx filesystem.                      |
+| Name                           | Description                                               |
+|--------------------------------|-----------------------------------------------------------|
+| file_system_id                 | The id of the FSx filesystem.                             |
+| file_system_security_group_ids | The security group ids for the filesystem security group. |
+| file_system_subnet_id          | The id of the subnet associated with the FSx filesystem.  |
+| file_system_vpc_id             | The vpc id of the FSx filesystem.                         |
+| file_system_dns_name           | The dns name of the FSx filesystem.                       |
+| file_system_backup_id          | The id of the backup of the FSx filesystem.               |
 
 
 ### Testing
@@ -114,5 +116,5 @@ To run the tests locally
 2. Execute the test runner
 
 ```shell
-python -m pytest test-module-fsx-lustre-monitoring.py
+python -m pytest test-module-fsx-lustre.py
 ```

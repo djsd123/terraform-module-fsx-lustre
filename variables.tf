@@ -88,3 +88,10 @@ variable "alarm_notification_email_address" {
   type        = string
   description = "The email address to send FSX storage alarms/alerts to"
 }
+
+variable "enable_backups" {
+  type        = bool
+  description = "Whether to enable backups for this filesystem"
+
+  default = false
+}

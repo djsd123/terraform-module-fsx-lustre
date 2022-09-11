@@ -74,4 +74,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Test with pytest
-        run: python -m pytest test-module-fsx-lustre-monitoring.py
+        run: python -m pytest test-module-fsx-lustre.py
