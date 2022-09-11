@@ -22,24 +22,34 @@ Terraform AWS module to create an [FSx] Lustre filesystem
 
 ## Usage
 
-Change directory to fixtures
-```shell
-cd fixtures
-```
+```terraform
+variable "name" {
+  type    = string
+  default = "fsx-test"
+}
 
-Initialise [terraform]
-```shell
-terraform init
-```
+module "fsx_lustre_monitoring" {
+  source = "github.com/djsd123/terraform-module-fsx-lustre"
 
-Run a plan
-```shell
-terraform plan
-```
+  name                                   = "${var.name}-mon"
+  region                                 = "eu-west-1"
+  subnet_id                              = "subnet-01234567890abcdefg"
+  security_group_ids                     = ["sg-01234567890abcdefg"]
+  storage_capacity                       = 7200
+  enable_low_storage_capacity_monitoring = true
+  alarm_notification_email_address       = "rishi.fishi@hustings.wem"
+}
 
-Deploy
-```shell
-terraform apply
+module "fsx_lustre_no_monitoring" {
+  source = "github.com/djsd123/terraform-module-fsx-lustre"
+
+  name                                   = "${var.name}-nomon"
+  region                                 = "eu-west-1"
+  subnet_id                              = "subnet-01234567890abcdefg"
+  security_group_ids                     = ["sg-01234567890abcdefg"]
+  storage_capacity                       = 7200
+  alarm_notification_email_address       = "liz.bot@hustings.wem"
+}
 ```
 
 
