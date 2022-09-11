@@ -22,9 +22,6 @@ Terraform AWS module to create an [FSx] Lustre filesystem
 
 ## Usage
 
-**note**
-Amend the state backend bucket value in [versions.tf](versions.tf), line 15 to your own state bucket
-
 Change directory to fixtures
 ```shell
 cd fixtures
