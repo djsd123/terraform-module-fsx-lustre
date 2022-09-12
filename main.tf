@@ -1,3 +1,5 @@
+# foo bar
+
 resource "aws_fsx_lustre_file_system" "fsx_filesystem" {
   import_path              = var.s3_import_path
   storage_capacity         = var.storage_capacity
