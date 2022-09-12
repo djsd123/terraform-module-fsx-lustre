@@ -13,6 +13,7 @@ module "fsx_lustre_monitoring" {
   security_group_ids                     = ["sg-01234567890abcdefg"]
   storage_capacity                       = 7200
   enable_low_storage_capacity_monitoring = true
+  enable_backups                         = true
   alarm_notification_email_address       = "rishi.fishi@hustings.wem"
 }
 

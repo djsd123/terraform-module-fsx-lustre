@@ -8,8 +8,14 @@ resource "aws_fsx_lustre_file_system" "fsx_filesystem" {
   storage_type             = var.storage_type
   backup_id                = var.backup_id
   deployment_type          = var.deployment_type
+  copy_tags_to_backups     = true
 
   tags = {
     Name = var.name
   }
+}
+
+resource "aws_fsx_backup" "fsx_filesystem_backup" {
+  count          = var.enable_backups ? 1 : 0
+  file_system_id = aws_fsx_lustre_file_system.fsx_filesystem.id
 }

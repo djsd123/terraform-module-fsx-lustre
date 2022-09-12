@@ -17,3 +17,7 @@ output "file_system_vpc_id" {
 output "file_system_dns_name" {
   value = aws_fsx_lustre_file_system.fsx_filesystem.dns_name
 }
+
+output "file_system_backup_id" {
+  value = try(aws_fsx_backup.fsx_filesystem_backup[0].id, null)
+}
