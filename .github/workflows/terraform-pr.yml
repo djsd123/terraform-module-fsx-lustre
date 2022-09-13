@@ -5,6 +5,7 @@ on:
     paths:
       - '**.tf'
       - '**.py'
+      - '**.yml'
     types:
       - opened
       - reopened
@@ -62,6 +63,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.2
+          terraform_wrapper: false
 
       - name: Setup Python
         uses: actions/setup-python@v4
