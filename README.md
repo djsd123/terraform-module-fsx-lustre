@@ -58,7 +58,7 @@ module "fsx_lustre_no_monitoring" {
 | name                                     | Common name for all resources.                                                                                                                                    | `string`       | `""`            |   yes    |
 | region                                   | The region to deploy the resources.                                                                                                                               | `string`       | `""`            |   yes    |
 | subnet_id                                | The subnet to create the filesystem in.  Note; FSx Lustre only supports one 'availability zone/subnet'.                                                           | `string`       | `""`            |   yes    |
-| security_group_ids                       | A list of security group Ids to apply to the filesystem.                                                                                                          | `list(string)` | `""`            |   yes    |
+| security_group_ids                       | A list of security group Ids to permit access to the filesystem.                                                                                                  | `list(string)` | `""`            |   yes    |
 | storage_capacity                         | Storage capacity of file system. See: https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystem.html#FSx-CreateFileSystem-request-StorageCapacity. | `number`       | `""`            |   yes    |
 | s3_import_path                           | The s3 bucket to use to back your fsx filesystem. Defaults to NASA's Nex open data bucket.                                                                        | `string`       | `s3://nasanex`  |    no    |
 | file_system_type_version                 | The Lustre version for the file system.                                                                                                                           | `number`       | `2.12`          |    no    |
@@ -70,6 +70,7 @@ module "fsx_lustre_no_monitoring" {
 | low_free_data_storage_capacity_threshold | Low free data storage capacity threshold (Bytes).                                                                                                                 | `string`       | `7100000000000` |    no    |
 | alarm_notification_email_address         | The email address to send FSX storage alarms/alerts to.                                                                                                           | `string`       | `""`            |   yes    |
 | enable_backups                           | Whether to enable backups for this filesystem?                                                                                                                    | `bool`         | `false`         |    no    |
+| vpc_id                                   | The Id of the vpc to deploy the filesystem into                                                                                                                   | `string`       | `""`            |   yes    |
 
 
 ## Outputs

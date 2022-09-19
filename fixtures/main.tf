@@ -9,6 +9,7 @@ module "fsx_lustre_monitoring" {
 
   name                                   = "${var.name}-mon"
   region                                 = "eu-west-1"
+  vpc_id                                 = "vpc-01234567890abcdefg"
   subnet_id                              = "subnet-01234567890abcdefg"
   security_group_ids                     = ["sg-01234567890abcdefg"]
   storage_capacity                       = 7200
@@ -22,6 +23,7 @@ module "fsx_lustre_no_monitoring" {
 
   name                                   = "${var.name}-nomon"
   region                                 = "eu-west-1"
+  vpc_id                                 = "vpc-01234567890abcdefg"
   subnet_id                              = "subnet-01234567890abcdefg"
   security_group_ids                     = ["sg-01234567890abcdefg"]
   storage_capacity                       = 7200
