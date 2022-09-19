@@ -1,7 +1,7 @@
 resource "aws_fsx_lustre_file_system" "fsx_filesystem" {
   import_path              = var.s3_import_path
   storage_capacity         = var.storage_capacity
-  security_group_ids       = var.security_group_ids
+  security_group_ids       = [aws_security_group.file_system_sec_grp.id]
   subnet_ids               = [var.subnet_id]
   file_system_type_version = var.file_system_type_version
   data_compression_type    = var.data_compression_type

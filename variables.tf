@@ -8,6 +8,11 @@ variable "region" {
   description = "The region to deploy the resources"
 }
 
+variable "vpc_id" {
+  type        = string
+  description = "The Id of the vpc to deploy the filesystem into"
+}
+
 variable "subnet_id" {
   type        = string
   description = "The subnet to create the filesystem in.  Note; FSx Lustre only supports one 'availability zone/subnet'"
@@ -15,7 +20,7 @@ variable "subnet_id" {
 
 variable "security_group_ids" {
   type        = list(string)
-  description = "A list of security group Ids to apply to the filesystem."
+  description = "A list of security group Ids to permit access to the filesystem."
 }
 
 variable "storage_capacity" {
