@@ -25,7 +25,9 @@ variable "security_group_ids" {
 
 variable "storage_capacity" {
   type        = number
-  description = "Storage capacity of file system. See: https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystem.html#FSx-CreateFileSystem-request-StorageCapacity"
+  description = "Storage capacity of file system in (GB) Minimum of 1200. See: https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystem.html#FSx-CreateFileSystem-request-StorageCapacity"
+
+  default = 1200
 }
 
 variable "s3_import_path" {
@@ -92,6 +94,8 @@ variable "low_free_data_storage_capacity_threshold" {
 variable "alarm_notification_email_address" {
   type        = string
   description = "The email address to send FSX storage alarms/alerts to"
+
+  default = ""
 }
 
 variable "enable_backups" {
